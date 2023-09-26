@@ -1,0 +1,102 @@
+<div class="container mt-4 text-light">
+    <form [formGroup]="userForm">
+        <div class="row mt-2">
+            <div class="col-md-12">
+                <h4>Add Data</h4>
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col-md-12">
+                <label for="">Invoice Number</label>
+                <input class="form-control" type="text" name="invoiceNumber" formControlName="invoiceNumber" />
+            </div>
+            <div *ngIf="userForm.controls?.['invoiceNumber']?.errors && userForm.controls?.['invoiceNumber']?.dirty">
+                <span *ngIf="userForm.controls['invoiceNumber'].hasError('uniqueCode')" class="text-danger">
+                    Invoice Number is not unique.
+                </span>
+                <span class="text-danger" *ngIf="userForm.controls['invoiceNumber'].hasError('required')">
+                    Invoice Number is required.
+                </span>
+            </div>   
+        </div>
+
+        <div class="row mt-3">
+            <div class="col-md-12">
+                <label for="currencyOptions">Currency</label>
+                <select id="currencyOptions" class="ms-4 form-control" formControlName="currencyId">
+                    <option *ngFor="let option of currencyOptions" [value]="option.value">{{ option.label }}</option>
+                </select>
+            </div>
+            <div *ngIf="userForm.controls?.['currencyId']?.errors && userForm.controls?.['currencyId']?.dirty">
+                <span class="text-danger" *ngIf="userForm.controls['currencyId'].hasError('required')">
+                    Currency is required.
+                </span>
+            </div>
+        </div>
+
+        <div class="row mt-3">
+            <div class="col-md-12">
+                <label for="vendorOptions">Vendor</label>
+                <select id="vendorOptions" class="ms-4 form-control" formControlName="vendorId">
+                    <option *ngFor="let option of vendorOptions" [value]="option.value">{{ option.label }}</option>
+                </select>
+            </div>
+            <div *ngIf="userForm.controls?.['vendorId']?.errors && userForm.controls?.['vendorId']?.dirty">
+                <span class="text-danger" *ngIf="userForm.controls['vendorId'].hasError('required')">
+                    Vendor is required.
+                </span>
+            </div>
+        </div>
+
+        <div class="row mt-2">
+            <div class="col-md-12">
+                <label for="">Invoice Amount</label>
+                <input class="form-control" type="number" name="invoiceAmount" formControlName="invoiceAmount" />
+            </div>
+            <div *ngIf="userForm.controls?.['invoiceAmount']?.errors && userForm.controls?.['invoiceAmount']?.dirty">
+                <span class="text-danger" *ngIf="userForm.controls['invoiceAmount'].hasError('required')">
+                    Invoice Amount is required.
+                </span>
+            </div>
+        </div>
+
+        <div class="row mt-2">
+            <div class="col-md-12">
+                <label for="">Invoice Received Date</label>
+                <input class="form-control" type="date" name="invoiceReceivedDate" formControlName="invoiceReceivedDate" />
+            </div>
+            <div *ngIf="userForm.controls?.['invoiceReceivedDate']?.errors && userForm.controls?.['invoiceReceivedDate']?.dirty">
+                <span class="text-danger" *ngIf="userForm.controls['invoiceReceivedDate'].hasError('required')">
+                    Invoice Received Date is required.
+                </span>
+            </div>
+        </div>
+
+        <div class="row mt-2">
+            <div class="col-md-12">
+                <label for="">Invoice Due Date</label>
+                <input class="form-control" type="date" name="invoiceDueDate" formControlName="invoiceDueDate" />
+            </div>
+            <div *ngIf="userForm.controls?.['invoiceDueDate']?.errors && userForm.controls?.['invoiceDueDate']?.dirty">
+                <span class="text-danger" *ngIf="userForm.controls['invoiceDueDate'].hasError('required')">
+                    Invoice Due Date is required.
+                </span>
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-md-3">
+                <button *ngIf="status" (click)="register()" [disabled]="!userForm.valid" class="btn btn-primary"
+                    type="submit">
+                    Add
+                </button>
+                <button *ngIf="!status" (click)="update()" [disabled]="!userForm.valid" class="btn btn-primary"
+                    type="submit">
+                    Update
+                </button>
+
+            </div>
+        </div>
+    </form>
+
+</div>

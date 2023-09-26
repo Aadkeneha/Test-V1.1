@@ -1,0 +1,88 @@
+<div class="container mt-4 text-light">
+    <form [formGroup]="userForm">
+        <div class="row mt-4">
+            <div class="col-md-12">
+                <h4>Add Data</h4>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-md-12">
+                <label for="">Vendor Code</label>
+                <input class="form-control" type="text" name="vendorCode" formControlName="vendorCode" />
+            </div>
+            <div *ngIf="userForm.controls?.['vendorCode']?.errors && userForm.controls?.['vendorCode']?.dirty">
+                <span *ngIf="userForm.controls['vendorCode']?.errors?.['uniqueVendorCode']" class="text-danger">
+                    Vendor code is not unique.
+                </span>
+                <span class="text-danger" *ngIf="userForm.controls['vendorCode'].hasError('required')">
+                    Vender Code is required.
+                </span>
+            </div>
+        </div>
+
+
+        <div class="row mt-4">
+            <div class="col-md-12">
+                <label for="">Vendor Name</label>
+                <input class="form-control" type="text" name="vendorLongName" formControlName="vendorLongName" />
+            </div>
+            <div *ngIf="userForm.controls?.['vendorLongName']?.errors && userForm.controls?.['vendorLongName']?.dirty">
+                <span class="text-danger" *ngIf="userForm.controls['vendorLongName'].hasError('required')">
+                    Vender Name is required.
+                </span>
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-md-12">
+                <label for="">Vendor Phone Number</label>
+                <input class="form-control" type="text" name="vendorPhoneNumber" formControlName="vendorPhoneNumber" />
+            </div>
+            <div
+                *ngIf="userForm.controls?.['vendorPhoneNumber']?.errors && userForm.controls?.['vendorPhoneNumber']?.dirty">
+                <span class="text-danger" *ngIf="userForm.controls['vendorPhoneNumber'].hasError('required')">
+                    Vender Phone Number is required.
+                </span>
+                <span class="text-danger" *ngIf="userForm.controls['vendorPhoneNumber'].hasError('minlength')">Phone
+                    Number must be of 10 digits.
+                </span>
+                <span class="text-danger" *ngIf="userForm.controls['vendorPhoneNumber'].hasError('maxlength')">Phone
+                    Number must be of 10 digits.
+                </span>
+                <span class="text-danger" *ngIf="userForm.controls['vendorPhoneNumber'].hasError('numericOnly')">
+                    Phone Numbers only.
+                </span>
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-md-12">
+                <label for="">Vendor Email</label>
+                <input class="form-control" type="text" name="vendorEmail" formControlName="vendorEmail" />
+            </div>
+            <div *ngIf="userForm.controls?.['vendorEmail']?.errors && userForm.controls?.['vendorEmail']?.dirty">
+                <span class="text-danger" *ngIf="userForm.controls['vendorEmail'].hasError('required')">
+                    Vender Email is required.
+                </span>
+                <span class="text-danger" *ngIf="userForm.controls['vendorEmail'].hasError('email')">
+                    Invalid email format.
+                </span>
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-md-3">
+                <button *ngIf="status" (click)="register()" [disabled]="!userForm.valid" class="btn btn-primary"
+                    type="submit">
+                    Add
+                </button>
+                <button *ngIf="!status" (click)="update()" [disabled]="!userForm.valid" class="btn btn-primary"
+                    type="submit">
+                    Update
+                </button>
+
+            </div>
+        </div>
+    </form>
+
+</div>

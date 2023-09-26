@@ -1,0 +1,37 @@
+<div class="container mt-4">
+    <div class="row mt-4">
+        <div class="col-md-3 mb-3">
+            <button [routerLink]="['/currency-form']" class="btn btn-outline-light">
+                Add Currency to List
+            </button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table custom-rounded-table table-bordered text-center">
+                <thead>
+                    <tr>
+                        <th>Currency Id</th>
+                        <th>Currency Code</th>
+                        <th>Currency Name</th>
+                        <th colspan="2">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let i of cList">
+                        <td>{{i.currencyId}}</td>
+                        <td>{{i.currencyCode}}</td>
+                        <td>{{i.currencyName}}</td>
+                        <td>
+                            <button class="btn btn-sm btn-success" (click)="editRecord(i)">Edit</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-danger" (click)="deleteRecord(i.currencyId)">Delete</button>
+                        </td>
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

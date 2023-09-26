@@ -1,0 +1,54 @@
+<div class="container mt-4">
+    <div class="row mt-4">
+        <div class="col-md-3 mb-3">
+            <button [routerLink]="['/invoice-form']" class="btn btn-outline-light">
+                Add Invoice to List
+            </button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table custom-rounded-table table-bordered text-center">
+                <thead>
+                    <tr>
+                        <th>InvoiceId</th>
+                        <th>InvoiceNumber</th>
+                        <th>CurrencyId</th>
+                        <th>VendorId</th>
+                        <th>InvoiceAmount</th>
+                        <th>InvoiceReceivedDate</th>
+                        <th>InvoiceDueDate</th>
+                        <th>IsActive</th>
+                        <th colspan="2">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let i of iList" [ngClass]="{'table-secondary':i.isActive==false}">
+                        <td>{{i.invoiceId}}</td>
+                        <td>{{i.invoiceNumber}}</td>
+                        <td>{{i.currencyId}}</td>
+                        <td>{{i.vendorId}}</td>
+                        <td>{{i.invoiceAmount}}</td>
+                        <td>{{i.invoiceReceivedDate | date:'MMM dd, yyyy'}}</td>
+                        <td>{{i.invoiceDueDate | date:'MMM dd, yyyy'}}</td>
+                        <td>
+                            <button (click)="UpdateIsActive(i.invoiceId)" class="btn btn-sm btn-secondary" *ngIf="!i.isActive">
+                                Active
+                            </button>
+                            <button (click)="UpdateIsActive(i.invoiceId)" class="btn btn-sm btn-primary" *ngIf="i.isActive">
+                                InActive
+                            </button>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-success" (click)="editRecord(i)">Edit</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-danger" (click)="deleteRecord(i.invoiceId)">Delete</button>
+                        </td>
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

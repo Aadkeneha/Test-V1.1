@@ -1,1 +1,21 @@
 /* You can add global styles to this file, and also import other style files */
+/* bootstrap */
+@import '~bootstrap/dist/css/bootstrap.css';
+/* Google fonts */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&family=Cinzel+Decorative:wght@700&display=swap');
+
+html, body{height: 100%;}
+body 
+{ 
+    margin: 0; 
+    font-family:"Poppins" , sans-serif; 
+    background: linear-gradient(90deg, hsla(217, 96%, 11%, 1) 0%, hsla(134, 31%, 29%, 1) 100%, hsla(216, 56%, 16%, 1) 100%);
+}
+.text-light{
+    color: #fff;
+}
+.custom-rounded-table {
+    border-radius: 4px; 
+    overflow: hidden;
+}

@@ -1,0 +1,56 @@
+<div class="container mt-4 text-light">
+    <form [formGroup]="userForm">
+        <div class="row mt-4">
+            <div class="col-md-12">
+                <h4>Add Data</h4>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-md-12">
+                <label for="">Currency Code</label>
+                <input class="form-control" type="text" name="currencyCode" formControlName="currencyCode" />
+            </div>
+            <div *ngIf="userForm.controls?.['currencyCode']?.errors && userForm.controls?.['currencyCode']?.dirty">
+                <span *ngIf="userForm.controls['currencyCode']?.errors?.['uniqueCurrencyCode']" class="text-danger">
+                    Currency code is not unique.
+                </span>
+                <span class="text-danger" *ngIf="userForm.controls['currencyCode'].hasError('required')">
+                    Currency code is required.
+                </span>
+                <span class="text-danger" *ngIf="userForm.controls['currencyCode'].hasError('minlength')">
+                    Currency code must be of 3 characters.
+                </span>
+                <span class="text-danger" *ngIf="userForm.controls['currencyCode'].hasError('maxlength')">
+                    Currency code must be of 3 characters.
+                </span>
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-md-12">
+                <label for="">Currency Name</label>
+                <input class="form-control" type="text" name="currencyName" formControlName="currencyName" />
+            </div>
+            <div *ngIf="userForm.controls?.['currencyName']?.errors && userForm.controls?.['currencyName']?.dirty">
+                <span class="text-danger" *ngIf="userForm.controls['currencyName'].hasError('required')">
+                    Currency Name is required.
+                </span>
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-md-3">
+                <button *ngIf="status" (click)="register()" [disabled]="!userForm.valid" class="btn btn-primary"
+                    type="submit">
+                    Add
+                </button>
+                <button *ngIf="!status" (click)="update()" [disabled]="!userForm.valid" class="btn btn-primary"
+                    type="submit">
+                    Update
+                </button>
+
+            </div>
+        </div>
+    </form>
+
+</div>

@@ -1,0 +1,52 @@
+<div class="container mt-4">
+    <div class="row mt-4">
+        <div class="col-md-3 mb-3">
+            <button [routerLink]="['/vendor-form']" class="btn btn-outline-light">
+                Add Vendor to List
+            </button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table custom-rounded-table table-bordered text-center">
+                <thead>
+                    <tr>
+                        <th>VendorId</th>
+                        <th>VendorCode</th>
+                        <th>VendorLongName</th>
+                        <th>VendorPhoneNumber</th>
+                        <th>VendorEmail</th>
+                        <th>VendorCreatedOn</th>
+                        <th>IsActive</th>
+                        <th colspan="2">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let i of vList" [ngClass]="{'table-secondary':i.isActive==false}">
+                        <td>{{i.vendorId}}</td>
+                        <td>{{i.vendorCode}}</td>
+                        <td>{{i.vendorLongName}}</td>
+                        <td>{{i.vendorPhoneNumber}}</td>
+                        <td>{{i.vendorEmail}}</td>
+                        <td>{{i.vendorCreatedOn | date:'MMM dd, yyyy'}}</td>
+                        <td>
+                            <button (click)="UpdateIsActive(i.vendorId)" class="btn btn-sm btn-secondary" *ngIf="!i.isActive">
+                                Active
+                            </button>
+                            <button (click)="UpdateIsActive(i.vendorId)" class="btn btn-sm btn-primary" *ngIf="i.isActive">
+                                InActive
+                            </button>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-success" (click)="editRecord(i)">Edit</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-danger" (click)="deleteRecord(i.vendorId)">Delete</button>
+                        </td>
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

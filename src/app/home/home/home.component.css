@@ -1,0 +1,22 @@
+.coloured-section{
+    background-color: rgba(255, 255, 255, 0.10);
+    margin: 20px 10px 10px 10px;
+    border-radius: 5px;
+}
+
+
+.title-img{
+    width: 100%;
+    transform: rotate(5deg);
+}
+
+.content{
+    display: flex;
+    flex-direction: row;
+}
+
+#title .container-fluid{
+    padding: 4% 6% 7%;
+    text-align: left;
+    color: #fff;
+}
